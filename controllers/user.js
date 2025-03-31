@@ -5,7 +5,7 @@ import User from "../models/user.js";
 const router = express.Router();
 
 router.get("/sign-up", (req, res) => {
-  res.render("auth/sign-up.ejs");
+  res.render("res/sign-up.ejs");
 });
 
 router.get("/sign-in", (req, res) => {
@@ -62,9 +62,6 @@ router.post("/sign-in", async (req, res) => {
       return res.send("Login failed. Please try again.");
     }
 
-    // There is a user AND they had the correct password. Time to make a session!
-    // Avoid storing the password, even in hashed format, in the session
-    // If there is other data you want to save to `req.session.user`, do so here!
     req.session.user = {
       username: userInDatabase.username,
       _id: userInDatabase._id,
